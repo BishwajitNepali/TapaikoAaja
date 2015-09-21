@@ -5,10 +5,10 @@
     android:background="#ffffff"
     android:orientation="vertical" >
     
-    <Button 
+    <ImageView 
         android:layout_width="fill_parent"
         android:layout_height="90dp"
-        android:background="@drawable/bhagya"/>
+        android:background="@drawable/rashifal"/>
     
     
     <TextView 
