@@ -1,11 +1,13 @@
 package com.thangLaStudio.today;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.admob.android.ads.AdView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -13,12 +15,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import com.thangLaStudio.Adapter.CustomAdapter;
 import com.thangLaStudio.Model.Rashi;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	ListView rashiListView;
@@ -35,6 +38,7 @@ public class MainActivity extends Activity {
 	final String TAG_RASHI = "panelbody_description";
 	ArrayList<Rashi> rashiList = new ArrayList<Rashi>();
 	CustomAdapter adapter;
+	TextView date_text;
 
 	final String url = "https://api.import.io/store/data/091cca2d-d594-49f4-83df-0de3e40ca719/_query?input/webpage/url=http%3A%2F%2Fnepalipatro.com.np%2Frashifal%2Findex%2Ftype%2Fdaily&_user=1f737b29-ee16-4559-9519-770235ddd211&_apikey=1f737b29ee1645599519770235ddd2118bddb15a432b7b4c0d803011fa957ed8e3116922d0001b2a0eeb64b6c2684e3cd1ab92160010b7ad7612e603c5e9fdbd0f0d81d83671f8dfd9d98ec48f9b3d98";
 
@@ -42,9 +46,13 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+
 		rashiListView = (ListView) findViewById(R.id.rashiList);
+		date_text=(TextView) findViewById(R.id.datetext);
 		loadData();
 		Log.e("below", "loaddata");
+		loadDate();
 
 		adapter = new CustomAdapter(MainActivity.this, rashiList);
 		rashiListView.setAdapter(adapter);
@@ -61,13 +69,20 @@ public class MainActivity extends Activity {
 				Log.e("b4", rashiList.get(position).getIrashi()+"");
 				startActivity(ttt);
 				
-				
-				
-				
-
 			}
 		});
 
+	}
+
+	private void loadDate() {
+		// TODO Auto-generated method stub
+		
+		long date = System.currentTimeMillis(); 
+
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+		String dateString = sdf.format(date);   
+		date_text.setText(dateString);
+		
 	}
 
 	private ArrayList<Rashi> loadData() {
@@ -122,6 +137,9 @@ public class MainActivity extends Activity {
 						Log.e("From Main Activity",
 								"Error: " + error.getMessage());
 						// hide the progress dialog
+						
+						date_text.setText("Internet Not Available");
+						date_text.setTextColor(Color.RED);
 
 					}
 

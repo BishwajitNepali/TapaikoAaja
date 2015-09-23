@@ -4,9 +4,31 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     tools:context="com.thangLaStudio.today.MainActivity" >
+    
+	<TextView 
+	    android:id="@+id/date"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Date:"
+	    android:layout_marginLeft="5dp"
+	    android:layout_marginTop="5dp"
+	    android:textColor="#006600"/>
+	
+	<TextView 
+	    android:id="@+id/datetext"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@+id/date"
+	    android:text="hfahfdhfl"
+	    android:layout_marginLeft="20dp"
+	    android:layout_marginTop="5dp"
+	    android:textColor="#006600"/>
+    
 
     <ListView
         android:id="@+id/rashiList"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/datetext"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>

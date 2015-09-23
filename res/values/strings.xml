@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Mero RashiFal</string>
+    <string name="app_name">Nepali RashiFal</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1965077845280231/1865200505</string>
 
 </resources>
