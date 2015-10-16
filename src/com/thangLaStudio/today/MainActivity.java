@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 		
 		long date = System.currentTimeMillis(); 
 
-		SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM  dd, yyyy h:mm a");
 		String dateString = sdf.format(date);   
 		date_text.setText(dateString);
 		
